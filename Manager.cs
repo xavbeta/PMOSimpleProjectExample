@@ -24,12 +24,12 @@ namespace PMOTestProject
         private Dictionary<IVisitor, TextBox> visitors;
         private EditorHandler editor;
 
-        public Manager()
+        public Manager(IDatabase database)
         {
             InitializeComponent();
             InitializeCalulations();
 
-            db = DBHandler.Instance;
+            db = database;
             editor = new EditorHandler(txtName, txtPrice,txtDescription, txtQuantity, picBox);
             LoadStorage();
         }

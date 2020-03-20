@@ -12,20 +12,22 @@ namespace PMOTestProject.Database
     class DBHandler: IDatabase
     {
 
-        private const string DBPath = @"C:\Users\saver\OneDrive\Desktop\db2.txt";
+        private readonly string DBPath;
 
         private static DBHandler instance;
-        public static DBHandler Instance { 
-            get {
+        public static DBHandler GetInstance(string databaseFilePath) { 
+            
                 if (instance == null) {
-                    instance = new DBHandler();
+                    instance = new DBHandler(databaseFilePath);
                 }
 
                 return instance; 
-            }
+            
         }
 
-        protected DBHandler () {}
+        protected DBHandler (string datafile) {
+            DBPath = datafile;
+        }
 
         public IList<Models.Item> GetData()
         {

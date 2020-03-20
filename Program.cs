@@ -16,7 +16,11 @@ namespace PMOTestProject
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Manager());
+            Application.Run(
+                new Manager(
+                    Database.DBHandler.GetInstance(@"C:\Users\saver\OneDrive\Desktop\db2.txt")
+                )
+            );
         }
     }
 }

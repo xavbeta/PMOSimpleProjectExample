@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PMOTestProject.Database
 {
-    interface IDatabase
+    public interface IDatabase
     {
         IList<Models.Item> GetData();
         void SaveData(IList<Models.Item> items);
