@@ -21,6 +21,7 @@ namespace PMOTestProject
         private IList<Item> items = new List<Item>();
         private readonly DBHandler db;
         private Dictionary<IVisitor, TextBox> visitors;
+        private EditorHandler editor;
 
         public Manager()
         {
@@ -28,6 +29,7 @@ namespace PMOTestProject
             InitializeCalulations();
 
             db = DBHandler.Instance;
+            editor = new EditorHandler(txtName, txtPrice,txtDescription, txtQuantity);
             LoadStorage();
         }
 
@@ -123,17 +125,12 @@ namespace PMOTestProject
 
         private void txtPrice_KeyPress(object sender, KeyPressEventArgs e)
         {
-            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar) && !(e.KeyChar == ',');
+            editor.HandlePriceInput(e);
         }
 
         private void txtQuantity_KeyPress(object sender, KeyPressEventArgs e)
         {
-            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
-        }
-
-        private void listItems_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
+            editor.HandleQuantityInput(e);
         }
 
         private void btnReset_Click(object sender, EventArgs e)
@@ -143,18 +140,12 @@ namespace PMOTestProject
 
         private void FillItemEditFields(Item item)
         {
-            this.txtName.Text = item.Name;
-            this.txtPrice.Text = item.Price.ToString();
-            this.txtDescription.Text = item.Description;
-            this.txtQuantity.Text = item.Quantity.ToString();
+            editor.FillFields(item);
         }
 
         private void ResetItemEditFields()
         {
-            this.txtName.Text = "";
-            this.txtPrice.Text = "";
-            this.txtDescription.Text = "";
-            this.txtQuantity.Text = "";
+            editor.ResetFields();
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
