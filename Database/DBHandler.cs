@@ -7,12 +7,12 @@ using System.Text;
 using System.Threading.Tasks;
 using PMOTestProject.Models;
 
-namespace PMOTestProject
+namespace PMOTestProject.Database
 {
-    class DBHandler
+    class DBHandler: IDatabase
     {
 
-        private const string DBPath = @"C:\Users\saver\OneDrive\Desktop\db.txt";
+        private const string DBPath = @"C:\Users\saver\OneDrive\Desktop\db2.txt";
 
         private static DBHandler instance;
         public static DBHandler Instance { 
@@ -35,7 +35,7 @@ namespace PMOTestProject
                 JArray jsonArray = JArray.Parse(File.ReadAllText(DBPath));
                 items = jsonArray.ToObject<IList<Item>>();
 
-            } catch (Newtonsoft.Json.JsonException) {
+            } catch (Exception) {
                 items = new List<Item>();
             }
 

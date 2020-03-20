@@ -12,14 +12,15 @@ namespace PMOTestProject.Extensions
     {
         public static ListViewItem ToListViewItem(this Item item)
         {
-            string[] row = { item.Name, item.Price.ToString(), item.Quantity.ToString(), item.Description, item.Picture};
+            string[] row = { item.Name, item.Price.ToString(), item.Quantity.ToString(), item.Description, item.Picture };
             return new ListViewItem(row);
-            
+
         }
 
         public static Item ToItem(this ListViewItem item)
         {
-            return new Item { 
+            return new Item
+            {
                 Name = item.SubItems[0].Text,
                 Price = float.Parse(item.SubItems[1].Text),
                 Quantity = int.Parse(item.SubItems[2].Text),
@@ -27,14 +28,6 @@ namespace PMOTestProject.Extensions
                 Picture = item.SubItems[4].Text,
             };
 
-        }
-
-        public static bool IsAValidElement(this Item item)
-        {
-            return item != null
-                && !string.IsNullOrEmpty(item.Name)
-                && item.Price > 0 
-                && item.Quantity > 0;
         }
     }
 }

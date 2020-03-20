@@ -65,7 +65,9 @@
     <Compile Include="Calculations\ItemCounter.cs" />
     <Compile Include="Calculations\ItemTotalQuantity.cs" />
     <Compile Include="Calculations\ItemTotalValue.cs" />
-    <Compile Include="DBHandler.cs" />
+    <Compile Include="Database\DBHandler.cs" />
+    <Compile Include="Database\IDatabase.cs" />
+    <Compile Include="EditorHandler.cs" />
     <Compile Include="Extensions\ItemExtensions.cs" />
     <Compile Include="Manager.cs">
       <SubType>Form</SubType>
@@ -89,6 +91,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="app.manifest" />
     <None Include="packages.config" />
@@ -107,6 +110,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include=".gitignore" />
+    <Content Include="basepic.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="Resources\basepic.png" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

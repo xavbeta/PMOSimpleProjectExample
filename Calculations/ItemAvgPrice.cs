@@ -13,7 +13,7 @@ namespace PMOTestProject.Calculations
 
         public float Result
         {
-            get => values.Average();
+            get => values.Count > 0 ? values.Average() : 0;
         }
 
         public void Reset() => values.Clear();

@@ -13,13 +13,14 @@ using Newtonsoft.Json.Linq;
 using PMOTestProject.Models;
 using PMOTestProject.Extensions;
 using PMOTestProject.Calculations;
+using PMOTestProject.Database;
 
 namespace PMOTestProject
 {
     public partial class Manager : Form
     {
         private IList<Item> items = new List<Item>();
-        private readonly DBHandler db;
+        private readonly IDatabase db;
         private Dictionary<IVisitor, TextBox> visitors;
         private EditorHandler editor;
 
@@ -29,7 +30,7 @@ namespace PMOTestProject
             InitializeCalulations();
 
             db = DBHandler.Instance;
-            editor = new EditorHandler(txtName, txtPrice,txtDescription, txtQuantity);
+            editor = new EditorHandler(txtName, txtPrice,txtDescription, txtQuantity, picBox);
             LoadStorage();
         }
 
@@ -86,12 +87,9 @@ namespace PMOTestProject
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            if (CheckItemField(this.txtName, this.txtDescription, this.txtPrice, this.txtQuantity))
+            if (CheckItemField())
             {
-                MemorizeItem(this.txtName.Text,
-                    this.txtDescription.Text,
-                    float.Parse(this.txtPrice.Text),
-                    int.Parse(this.txtQuantity.Text));
+                MemorizeItem();
                 ResetItemEditFields();
             } else
             {
@@ -99,16 +97,14 @@ namespace PMOTestProject
             }
         }
 
-        private bool CheckItemField(TextBox txtName, TextBox txtDescription, TextBox txtPrice, TextBox txtQuantity)
+        private bool CheckItemField()
         {
-            return !string.IsNullOrEmpty(txtName.Text)
-                && !string.IsNullOrEmpty(txtPrice.Text)
-                && !string.IsNullOrEmpty(txtQuantity.Text);
+            return editor.CheckFields();
         }
 
-        private void MemorizeItem(string name, string description, float price, int quantity)
+        private void MemorizeItem()
         {
-            var item = new Item { Name = name, Description = description, Price = price, Quantity = quantity };
+            var item = new Item { Name = editor.Name, Description = editor.Description, Price = editor.Price, Quantity = editor.Quantity, Picture = editor.ImageLocation };
             int index;
             if ((index = items.IndexOf(item)) >= 0)
             {
@@ -171,6 +167,23 @@ namespace PMOTestProject
         private void listItems_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
         {
             FillItemEditFields(e.Item.ToItem());
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            // Wrap the creation of the OpenFileDialog instance in a using statement,
+            // rather than manually calling the Dispose method to ensure proper disposal
+            using (OpenFileDialog dlg = new OpenFileDialog())
+            {
+                //For any other formats
+                dlg.Filter = "Image Files (*.bmp;*.jpg;*.jpeg,*.png)|*.BMP;*.JPG;*.JPEG;*.PNG";
+                dlg.FileName = picBox.ImageLocation ?? null;
+                    
+                if (dlg.ShowDialog() == DialogResult.OK)
+                {
+                    picBox.ImageLocation = dlg.FileName;
+                }
+            }
         }
     }
 }
