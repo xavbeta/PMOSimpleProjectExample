@@ -34,6 +34,30 @@ namespace PMOTestProject
             LoadStorage();
         }
 
+        internal EditorHandler EditorHandler
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
+        public Item Item
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
+        internal DBHandler DBHandler
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
         private void InitializeCalulations()
         {
             visitors = new Dictionary<IVisitor, TextBox> {

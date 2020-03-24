@@ -30,7 +30,7 @@
       <HashCode>AAAAAAAAAAAABAQAAAAAAAQAAAAAACAAAAAAAAAAAAA=</HashCode>
       <FileName>Calculations\ItemTotalValue.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" />
+    <Lollipop Position="0.21" Collapsed="true" />
   </Class>
   <Class Name="PMOTestProject.Database.DBHandler" BaseTypeListCollapsed="true">
     <Position X="0.5" Y="5.5" Width="1.5" />
@@ -41,7 +41,7 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="PMOTestProject.EditorHandler" Collapsed="true">
-    <Position X="9" Y="0.5" Width="1.5" />
+    <Position X="5.25" Y="2" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAYACAQAgAAAAAAAAAAQhgAAAAAAAAAgAgAIQAAQ=</HashCode>
       <FileName>EditorHandler.cs</FileName>
@@ -50,43 +50,36 @@
   <Class Name="PMOTestProject.Manager" Collapsed="true">
     <Position X="7" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>MABBIIAACSBRCBFAYAjAoJIiCQBAkBAAASBAAAkQgQY=</HashCode>
+      <HashCode>MABBIIAACSBRCBFAYAjAoJImCQBAkBAAASBAAgkRgQY=</HashCode>
       <FileName>Manager.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="EditorHandler" />
+      <Property Name="Item" />
+      <Property Name="DBHandler" />
+    </ShowAsAssociation>
   </Class>
   <Class Name="PMOTestProject.Program" Collapsed="true">
-    <Position X="2.25" Y="2.5" Width="1.5" />
+    <Position X="0.5" Y="2.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
       <FileName>Program.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="PMOTestProject.Extensions.ItemExtensions" Collapsed="true">
-    <Position X="2.25" Y="1.5" Width="1.5" />
+    <Position X="0.5" Y="1.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAA=</HashCode>
       <FileName>Extensions\ItemExtensions.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="PMOTestProject.Models.Item" BaseTypeListCollapsed="true">
-    <Position X="3.75" Y="5.5" Width="1.5" />
+  <Class Name="PMOTestProject.Models.Item" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="5.25" Y="4" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AIAAgAAAAQAgAAAAgAAAAAQAAAAAAAAAAAAAwAAAAAA=</HashCode>
       <FileName>Models\Item.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
-  </Class>
-  <Class Name="PMOTestProject.Properties.Resources" Collapsed="true">
-    <Position X="5.75" Y="1.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAACAAAAAAAAAAAAAABEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="PMOTestProject.Properties.Settings" Collapsed="true">
-    <Position X="5.75" Y="2.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAABAAAAAAAAAAAAAAA=</HashCode>
-    </TypeIdentifier>
   </Class>
   <Interface Name="PMOTestProject.Calculations.IVisitor">
     <Position X="7" Y="10.25" Width="1.5" />
@@ -96,7 +89,7 @@
     </TypeIdentifier>
   </Interface>
   <Interface Name="PMOTestProject.Calculations.IVisitorHost">
-    <Position X="3.75" Y="3.75" Width="1.5" />
+    <Position X="3.5" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Calculations\IVisitorHost.cs</FileName>
