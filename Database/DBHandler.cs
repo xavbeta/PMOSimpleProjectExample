@@ -34,14 +34,14 @@ namespace PMOTestProject.Database
             IList<Item> items = null;
             try
             {
-                JArray jsonArray = await new Task<JArray>(() => JArray.Parse(File.ReadAllText(DBPath)));
+                JArray jsonArray = JArray.Parse(File.ReadAllText(DBPath));
                 items = jsonArray.ToObject<IList<Item>>();
 
             } catch (Exception) {
                 items = new List<Item>();
             }
 
-            return await new Task<IList<Models.Item>>(() => items);
+            return items;
         }
 
         public async Task SaveData(IList<Models.Item> items)
@@ -57,7 +57,7 @@ namespace PMOTestProject.Database
                 })
             );
 
-            await new Task(() => File.WriteAllText(DBPath, itemsArray.ToString()));
+            File.WriteAllText(DBPath, itemsArray.ToString());
         }
 
     }

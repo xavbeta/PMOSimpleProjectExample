@@ -12,36 +12,39 @@ namespace PMOTestProject.Database
     class LocalDB : IDatabase
     {
 
-        private async Task<MySqlConnection> ConnectAsync()
+        private MySqlConnection Connect()
         {
             var connection = new MySqlConnection("server=127.0.0.1;user=root;password=;database=test_project");
-            await connection.OpenAsync();
+            connection.Open();
             return connection;
-
         }
 
         public async Task<IList<Item>> GetData()
         {
-            using (var connection = await ConnectAsync())
+            Console.WriteLine("READ Connection");
+            using (var connection = Connect())
             {
                 var command = new MySqlCommand(GenerateSelectAllQuery(), connection);
                 var reader = await command.ExecuteReaderAsync();
-
+                
                 List<Item> list = new List<Item>();
                 while (await reader.ReadAsync())
                 {
                     var i = new Item
                     {
                         Name = reader.GetString(0),
-                        Description = reader.GetString(1),
+                        Description = reader.IsDBNull(1) ? "" : reader.GetString(1),
                         Price = reader.GetFloat(2),
                         Quantity = reader.GetUInt16(3),
-                        Picture = reader.GetString(4)
+                        Picture = (reader.IsDBNull(4)? "" : reader.GetString(4)).Replace("|", "\\")
                     };
 
                     Console.WriteLine(i);
                     list.Add(i);
                 }
+
+                connection.Close();
+
                 return list;
             }
 
@@ -49,13 +52,15 @@ namespace PMOTestProject.Database
 
         public async Task SaveData(IList<Item> items)
         {
-            using (var connection = await ConnectAsync())
+            using (var connection = Connect())
             {
                 var deleteAllCommand = new MySqlCommand(GenerateDeleteAllQuery(), connection);
                 var delete = await deleteAllCommand.ExecuteNonQueryAsync();
-
+                
                 var insertCommand = new MySqlCommand(GenerateInsertQuery(items), connection);
                 var insert = await insertCommand.ExecuteNonQueryAsync();
+                
+                connection.Close();
             }
         }
 
@@ -69,7 +74,7 @@ namespace PMOTestProject.Database
 
         private string GenerateInsertQuery(IList<Item> items)
         {
-            var builder = new DeleteAllQueryBuilder();
+            var builder = new InsertQueryBuilder();
             builder.SetTable("items");
             builder.SetColumns(new List<string>
             {

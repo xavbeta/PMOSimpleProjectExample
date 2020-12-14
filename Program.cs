@@ -1,8 +1,12 @@
-﻿using System;
+﻿#define LOCAL
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+
+
 
 namespace PMOTestProject
 {
@@ -18,8 +22,11 @@ namespace PMOTestProject
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(
                 new Manager(
-                    //Database.DBHandler.GetInstance(@"C:\Users\saver\OneDrive\Desktop\db2.txt")
+#if (LOCAL)
+                    Database.DBHandler.GetInstance(@"C:\Users\saver\OneDrive\Desktop\db2.txt")
+#else
                     new Database.LocalDB()
+#endif
                 )
             );
         }

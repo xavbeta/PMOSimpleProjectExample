@@ -31,7 +31,7 @@ namespace PMOTestProject
 
             db = database;
             editor = new EditorHandler(txtName, txtPrice,txtDescription, txtQuantity, picBox);
-            LoadStorage();
+            LoadStorage().Wait();
         }
 
         internal EditorHandler EditorHandler
@@ -68,9 +68,19 @@ namespace PMOTestProject
             };
     }
 
-        private async void LoadStorage()
+        private async Task LoadStorage()
         {
-            items = await db.GetData();
+            try
+            {
+                items = await db.GetData();
+            }
+            catch (Exception ex)
+            {
+                Console.Error.WriteLine("Can't connect " +ex.Message );
+                Console.Error.WriteLine(ex.StackTrace);
+                return;
+            }
+
             this.listItems.Items.Clear();
             this.listItems.Items.AddRange(items.Select(i => i.ToListViewItem()).ToArray());
             UpdateCalculations();
@@ -89,31 +99,33 @@ namespace PMOTestProject
             }
         }
 
-        private void SaveStorage()
+        private async Task SaveStorage()
         {
-            db.SaveData(items);
+            await db.SaveData(items);
         }
 
-        private void Manager_Load(object sender, EventArgs e)
+        private async void Manager_Load(object sender, EventArgs e)
         {
-            LoadStorage();
+            await LoadStorage();
+
+            //LoadStorage().Wait();
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
+        private async Task btnSave_Click(object sender, EventArgs e)
         {
-            SaveStorage();
+            await SaveStorage();
         }
 
-        private void btnLoad_Click(object sender, EventArgs e)
+        private async void btnLoad_Click(object sender, EventArgs e)
         {
-            LoadStorage();
+            await LoadStorage();
         }
 
-        private void btnAdd_Click(object sender, EventArgs e)
+        private async void btnAdd_Click(object sender, EventArgs e)
         {
             if (CheckItemField())
             {
-                MemorizeItem();
+                await MemorizeItemAsync();
                 ResetItemEditFields();
             } else
             {
@@ -126,7 +138,7 @@ namespace PMOTestProject
             return editor.CheckFields();
         }
 
-        private void MemorizeItem()
+        private async Task MemorizeItemAsync()
         {
             var item = new Item { 
                 Name = editor.Name, 
@@ -146,8 +158,8 @@ namespace PMOTestProject
                 items.Add(item);
             }
             
-            SaveStorage();
-            LoadStorage();
+            await SaveStorage();
+            await LoadStorage();
         }
 
         private void txtPrice_KeyPress(object sender, KeyPressEventArgs e)
@@ -175,15 +187,15 @@ namespace PMOTestProject
             editor.ResetFields();
         }
 
-        private void btnDelete_Click(object sender, EventArgs e)
+        private async void btnDelete_Click(object sender, EventArgs e)
         {
             foreach (ListViewItem listItem in this.listItems.SelectedItems) {
                 this.items.Remove(listItem.ToItem());
                 break;
             }
 
-            SaveStorage();
-            LoadStorage();
+            await SaveStorage();
+            await LoadStorage();
         }
 
         private void btnEdit_Click(object sender, EventArgs e)

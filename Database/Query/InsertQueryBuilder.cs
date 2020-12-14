@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PMOTestProject.Database.Query
 {
-    class DeleteallQueryBuilder : IQueryBuilder
+    class InsertQueryBuilder : IQueryBuilder
     {
 
         private const string BASE_QUERY = "INSERT INTO {0} ({1}) VALUES {2}";
@@ -15,7 +15,7 @@ namespace PMOTestProject.Database.Query
         private string table;
         private string columns;
 
-        public DeleteallQueryBuilder()
+        public InsertQueryBuilder()
         {
             ResetBuilder();
         }
@@ -79,7 +79,7 @@ namespace PMOTestProject.Database.Query
             item.Description ?? "NULL",
             item.Price.ToString() ?? "NULL",
             item.Quantity.ToString() ?? "NULL",
-            item.Picture ?? "NULL",
+            (item.Picture ?? "NULL").Replace("\\","|"),
         };
 
             return $"('{string.Join("','", fields)}')";
