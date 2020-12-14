@@ -68,9 +68,9 @@ namespace PMOTestProject
             };
     }
 
-        private void LoadStorage()
+        private async void LoadStorage()
         {
-            items = db.GetData();
+            items = await db.GetData();
             this.listItems.Items.Clear();
             this.listItems.Items.AddRange(items.Select(i => i.ToListViewItem()).ToArray());
             UpdateCalculations();
@@ -128,7 +128,14 @@ namespace PMOTestProject
 
         private void MemorizeItem()
         {
-            var item = new Item { Name = editor.Name, Description = editor.Description, Price = editor.Price, Quantity = editor.Quantity, Picture = editor.ImageLocation };
+            var item = new Item { 
+                Name = editor.Name, 
+                Description = editor.Description, 
+                Price = editor.Price, 
+                Quantity = editor.Quantity, 
+                Picture = editor.ImageLocation 
+            };
+
             int index;
             if ((index = items.IndexOf(item)) >= 0)
             {
@@ -208,6 +215,11 @@ namespace PMOTestProject
                     picBox.ImageLocation = dlg.FileName;
                 }
             }
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

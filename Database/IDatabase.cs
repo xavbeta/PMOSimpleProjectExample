@@ -8,7 +8,7 @@ namespace PMOTestProject.Database
 {
     public interface IDatabase
     {
-        IList<Models.Item> GetData();
-        void SaveData(IList<Models.Item> items);
+        Task<IList<Models.Item>> GetData();
+        Task SaveData(IList<Models.Item> items);
     }
 }

@@ -32,6 +32,12 @@ namespace PMOTestProject.Models
 
         }
 
+        public override string ToString()
+        {
+            return $"Name: {Name} Description: {Description} Price: {Price} Quantity: {Quantity} Picture: {Picture}";
+        }
+
+
         private string Identifier(Item item) {
             return item.Name;
         }

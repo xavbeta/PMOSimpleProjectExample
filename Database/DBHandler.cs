@@ -29,22 +29,22 @@ namespace PMOTestProject.Database
             DBPath = datafile;
         }
 
-        public IList<Models.Item> GetData()
+        public async Task<IList<Models.Item>> GetData()
         {
             IList<Item> items = null;
             try
             {
-                JArray jsonArray = JArray.Parse(File.ReadAllText(DBPath));
+                JArray jsonArray = await new Task<JArray>(() => JArray.Parse(File.ReadAllText(DBPath)));
                 items = jsonArray.ToObject<IList<Item>>();
 
             } catch (Exception) {
                 items = new List<Item>();
             }
 
-            return items;
+            return await new Task<IList<Models.Item>>(() => items);
         }
 
-        public void SaveData(IList<Models.Item> items)
+        public async Task SaveData(IList<Models.Item> items)
         {
             JArray itemsArray = new JArray(
                 items.Select(i => new JObject
@@ -57,7 +57,7 @@ namespace PMOTestProject.Database
                 })
             );
 
-            File.WriteAllText(DBPath, itemsArray.ToString());
+            await new Task(() => File.WriteAllText(DBPath, itemsArray.ToString()));
         }
 
     }

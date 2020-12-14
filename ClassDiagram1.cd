@@ -41,14 +41,14 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="PMOTestProject.EditorHandler" Collapsed="true">
-    <Position X="5.25" Y="2" Width="1.5" />
+    <Position X="3.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAYACAQAgAAAAAAAAAAQhgAAAAAAAAAgAgAIQAAQ=</HashCode>
       <FileName>EditorHandler.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="PMOTestProject.Manager" Collapsed="true">
-    <Position X="7" Y="0.5" Width="1.5" />
+    <Position X="8" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>MABBIIAACSBRCBFAYAjAoJImCQBAkBAAASBAAgkRgQY=</HashCode>
       <FileName>Manager.cs</FileName>
@@ -73,7 +73,7 @@
       <FileName>Extensions\ItemExtensions.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="PMOTestProject.Models.Item" Collapsed="true" BaseTypeListCollapsed="true">
+  <Class Name="PMOTestProject.Models.Item" BaseTypeListCollapsed="true">
     <Position X="5.25" Y="4" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AIAAgAAAAQAgAAAAgAAAAAQAAAAAAAAAAAAAwAAAAAA=</HashCode>
@@ -82,7 +82,7 @@
     <Lollipop Position="0.2" />
   </Class>
   <Interface Name="PMOTestProject.Calculations.IVisitor">
-    <Position X="7" Y="10.25" Width="1.5" />
+    <Position X="6.5" Y="10.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAABAQAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Calculations\IVisitor.cs</FileName>
