@@ -51,7 +51,7 @@ namespace PMOTestProject
 
         internal void HandlePriceInput(KeyPressEventArgs e)
         {
-            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar) && !(e.KeyChar == ',');
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar) && !(e.KeyChar == '.');
         }
 
         internal void HandleQuantityInput(KeyPressEventArgs e)

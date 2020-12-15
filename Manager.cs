@@ -66,7 +66,7 @@ namespace PMOTestProject
                 { new ItemTotalValue(), this.txtTotalValue },
                 { new ItemTotalQuantity(), this.txtTotalItemCount }
             };
-    }
+        }
 
         private async Task LoadStorage()
         {
@@ -229,9 +229,6 @@ namespace PMOTestProject
             }
         }
 
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
+        
     }
 }

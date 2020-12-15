@@ -23,7 +23,7 @@ namespace PMOTestProject
             Application.Run(
                 new Manager(
 #if (LOCAL)
-                    Database.LocalFileDB.GetInstance(@"C:\Users\saver\OneDrive\Desktop\db2.txt")
+                    Database.LocalFileDB.GetInstance(@"fileDB.txt")
 #else
                     new Database.LocalDB()
 #endif
