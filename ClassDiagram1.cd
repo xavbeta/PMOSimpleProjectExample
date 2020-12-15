@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="PMOTestProject.Calculations.ItemAvgPrice" BaseTypeListCollapsed="true">
-    <Position X="9.5" Y="12.5" Width="1.5" />
+    <Position X="13.5" Y="12.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAABAQAAAAAAAQAAAAAACAAAAAAAAAAAAA=</HashCode>
       <FileName>Calculations\ItemAvgPrice.cs</FileName>
@@ -9,7 +9,7 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="PMOTestProject.Calculations.ItemCounter" BaseTypeListCollapsed="true">
-    <Position X="7.75" Y="12.5" Width="1.5" />
+    <Position X="11.75" Y="12.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAABAQABAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Calculations\ItemCounter.cs</FileName>
@@ -17,7 +17,7 @@
     <Lollipop Position="0.221" />
   </Class>
   <Class Name="PMOTestProject.Calculations.ItemTotalQuantity" BaseTypeListCollapsed="true">
-    <Position X="6" Y="12.5" Width="1.5" />
+    <Position X="10" Y="12.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAABAQAAAAAAAQAAAAAAACAAAAAAAAAAAA=</HashCode>
       <FileName>Calculations\ItemTotalQuantity.cs</FileName>
@@ -25,18 +25,18 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="PMOTestProject.Calculations.ItemTotalValue" BaseTypeListCollapsed="true">
-    <Position X="4.25" Y="12.5" Width="1.5" />
+    <Position X="8.25" Y="12.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAABAQAAAAAAAQAAAAAACAAAAAAAAAAAAA=</HashCode>
       <FileName>Calculations\ItemTotalValue.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.21" Collapsed="true" />
   </Class>
-  <Class Name="PMOTestProject.Database.DBHandler" BaseTypeListCollapsed="true">
-    <Position X="0.5" Y="5.5" Width="1.5" />
+  <Class Name="PMOTestProject.Database.LocalFileDB" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="6.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAEAAAAAAAAAAAAAAQBABAAAAAAAAAAAAAAIA=</HashCode>
-      <FileName>Database\DBHandler.cs</FileName>
+      <FileName>Database\LocalFileDB.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
@@ -50,7 +50,7 @@
   <Class Name="PMOTestProject.Manager" Collapsed="true">
     <Position X="8" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>MABBIIAACSBRCBFAYAjAoJImCQBAkBAAASBAAgkRgQY=</HashCode>
+      <HashCode>MABBIIAACSBRCBFAYAjAoJImCQBAkBAAASBAAgERgQY=</HashCode>
       <FileName>Manager.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -76,13 +76,45 @@
   <Class Name="PMOTestProject.Models.Item" BaseTypeListCollapsed="true">
     <Position X="5.25" Y="4" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AIAAgAAAAQAgAAAAgAAAAAQAAAAAAAAAAAAAwAAAAAA=</HashCode>
+      <HashCode>AIAAgAAAAQAgAAAEgAAAAAQAAAAAAAAAAAAAwAAAAAA=</HashCode>
       <FileName>Models\Item.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
+  <Class Name="PMOTestProject.Database.LocalDB">
+    <Position X="0.5" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAMAAAAAAAABAIAIAQAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Database\LocalDB.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="PMOTestProject.Database.Query.DeleteAllQueryBuilder" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="3.25" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>JAAAAAAAAAAIAABAAAAAAAAAgAAAAAgAEAAAAAAAAAA=</HashCode>
+      <FileName>Database\Query\DeleteAllQueryBuilder.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="PMOTestProject.Database.Query.InsertQueryBuilder" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="5.25" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>JAAAAAAAAAAIAABAAAgAAAAAgAAAAAgAGAAAAAACAAA=</HashCode>
+      <FileName>Database\Query\InsertQueryBuilder.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="PMOTestProject.Database.Query.SelectAllQueryBuilder" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7.25" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>JAAAAAAAAAAIAABAAAAAAAAAgAAAAAgAGAAAAAAAAAA=</HashCode>
+      <FileName>Database\Query\SelectAllQueryBuilder.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
   <Interface Name="PMOTestProject.Calculations.IVisitor">
-    <Position X="6.5" Y="10.25" Width="1.5" />
+    <Position X="10.5" Y="10.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAABAQAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Calculations\IVisitor.cs</FileName>
@@ -100,6 +132,13 @@
     <TypeIdentifier>
       <HashCode>AAAAAAAAEAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Database\IDatabase.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="PMOTestProject.Database.Query.IQueryBuilder" Collapsed="true">
+    <Position X="5.25" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAAIAAAAAAAAAAAAgAAAAAgAAAAAAAAAAAA=</HashCode>
+      <FileName>Database\Query\IQueryBuilder.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Font Name="Segoe UI" Size="9" />
