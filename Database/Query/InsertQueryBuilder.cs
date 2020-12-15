@@ -79,7 +79,7 @@ namespace PMOTestProject.Database.Query
             item.Description ?? "NULL",
             item.Price.ToString() ?? "NULL",
             item.Quantity.ToString() ?? "NULL",
-            (item.Picture ?? "NULL").Replace("\\","|"),
+            (item.Picture ?? "NULL").ToDB(),
         };
 
             return $"('{string.Join("','", fields)}')";

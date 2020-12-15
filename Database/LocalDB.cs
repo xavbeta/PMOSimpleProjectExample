@@ -35,7 +35,7 @@ namespace PMOTestProject.Database
                         Description = reader.IsDBNull(1) ? "" : reader.GetString(1),
                         Price = reader.GetFloat(2),
                         Quantity = reader.GetUInt16(3),
-                        Picture = (reader.IsDBNull(4)? "" : reader.GetString(4)).Replace("|", "\\")
+                        Picture = (reader.IsDBNull(4)? "" : reader.GetString(4)).FromDB()
                     };
 
                     Console.WriteLine(i);
@@ -96,6 +96,19 @@ namespace PMOTestProject.Database
 
         }
 
+    }
+
+    public static class StringExtensions
+    {
+        public static string FromDB(this string s)
+        {
+            return s.Replace("|", "\\");
+        }
+
+        public static string ToDB(this string s)
+        {
+            return s.Replace("\\","|");
+        }
     }
 
 }
