@@ -50,7 +50,7 @@ namespace PMOTestProject
             }
         }
 
-        internal DBHandler DBHandler
+        internal LocalFileDB DBHandler
         {
             get => default;
             set

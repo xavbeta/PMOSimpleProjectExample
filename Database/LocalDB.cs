@@ -21,7 +21,6 @@ namespace PMOTestProject.Database
 
         public async Task<IList<Item>> GetData()
         {
-            Console.WriteLine("READ Connection");
             using (var connection = Connect())
             {
                 var command = new MySqlCommand(GenerateSelectAllQuery(), connection);
