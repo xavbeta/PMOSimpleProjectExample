@@ -23,8 +23,8 @@ Ogni prodotto ha le seguenti caratteristiche:
 
 L'immagine e la descrizione sono opzionali mentre il nome, la quantità e il prezzo sono necessari.
 
-Il programma deve poter salvare i dati in un formato a scelta su disco.
-Eventuali release future potranno prevedere l'interfacciamento con un database.
+Il programma deve poter salvare i dati in un formato a scelta su disco o su database MySQL.
+
 
 
 
